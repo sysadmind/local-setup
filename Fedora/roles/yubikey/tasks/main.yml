@@ -1,0 +1,15 @@
+---
+
+- name: Install necessary modules to use yubikey
+  dnf: name={{ item }} state=present
+  with_items:
+    - ykpers
+    - pam_yubico
+    - pcsc-tools
+    - opensc
+    - ccid
+
+- name: Start and enable pcscd service
+  service: name=pcscd state=started enabled=yes
+
+...

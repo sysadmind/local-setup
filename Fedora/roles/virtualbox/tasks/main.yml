@@ -1,0 +1,9 @@
+---
+
+- name: Install VirtualBox
+  dnf: name=VirtualBox state=present
+
+- name: Install kernel source for kernel modules
+  dnf: name=kernel-devel state=present
+
+...

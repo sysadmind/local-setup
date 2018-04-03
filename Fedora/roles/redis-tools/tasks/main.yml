@@ -1,0 +1,9 @@
+---
+
+- name: Install redis for tooling
+  dnf: name=redis state=present
+
+- name: Install python redis module
+  pip: name=redis state=present
+
+...

@@ -1,0 +1,9 @@
+---
+
+- name: Enable Zeal copr repository
+  shell: dnf copr enable alunux/zeal-git -y
+
+- name: Install Zeal
+  dnf: name=zeal state=present
+
+...

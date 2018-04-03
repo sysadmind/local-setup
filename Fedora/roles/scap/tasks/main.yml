@@ -1,0 +1,8 @@
+---
+
+- name: Install scap workbench for testing openscap
+  dnf:
+    name: scap-workbench
+    state: present
+
+...

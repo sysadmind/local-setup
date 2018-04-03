@@ -1,0 +1,4 @@
+wireshark_users:
+    - "{{ lookup('env','USER') }}"
+zsh_users:
+    - "{{ lookup('env','USER') }}"

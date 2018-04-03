@@ -1,0 +1,7 @@
+---
+
+- name: Install remote desktop software
+  dnf: name={{ item }} state=present
+  with_items:
+    - remmina
+    - remmina-plugins-rdp

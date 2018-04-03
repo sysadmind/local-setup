@@ -1,0 +1,8 @@
+---
+
+- name: Install mackup
+  pip: name=mackup state=present
+
+- name: Template mackup configuration
+  template: src=mackup.cfg.j2 dest=~/.mackup.cfg
+  become: no

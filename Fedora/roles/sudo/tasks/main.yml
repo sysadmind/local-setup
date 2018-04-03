@@ -1,0 +1,6 @@
+---
+
+- name: Add passwordless sudo
+  lineinfile: "dest=/etc/sudoers state=present regexp='^%wheel' line='%wheel ALL=(ALL) NOPASSWD: ALL'"
+
+...

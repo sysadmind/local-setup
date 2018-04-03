@@ -1,0 +1,9 @@
+---
+
+- name: Install zsh shell
+  dnf: name=zsh state=present
+
+- name: Set default shell to be ZSH
+  user: name={{ item }} shell=/bin/zsh
+  with_items:
+    - zsh_users

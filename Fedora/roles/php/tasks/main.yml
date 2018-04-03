@@ -1,0 +1,9 @@
+---
+
+- name: Install php
+  dnf: name=php state=present
+
+- name: Install composer
+  dnf: name=composer state=present
+
+...

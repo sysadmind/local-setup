@@ -1,0 +1,6 @@
+---
+
+- name: Install diff tools
+  dnf: name={{ item }} state=present
+  with_items:
+    - meld

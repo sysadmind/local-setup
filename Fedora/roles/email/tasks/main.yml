@@ -1,0 +1,8 @@
+---
+
+- name: Install evolution email client
+  dnf: name=evolution state=present
+
+- name: Add EWS / Exchange support for Evolution
+  dnf: name=evolution-ews state=present
+...

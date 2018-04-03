@@ -1,0 +1,9 @@
+---
+
+- name: Add spotify repo
+  shell: dnf config-manager --add-repo=http://negativo17.org/repos/fedora-spotify.repo
+
+- name: Install Spotify
+  dnf: name=spotify-client state=present
+
+...

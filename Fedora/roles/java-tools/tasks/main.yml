@@ -1,0 +1,6 @@
+---
+
+- name: Install openjdk devel for java / jar tooling
+  dnf: name=java-1.8.0-openjdk-devel state=present
+
+...

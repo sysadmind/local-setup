@@ -1,0 +1,6 @@
+---
+
+- name: Install calibre ereader
+  dnf: name=calibre state=present
+
+...

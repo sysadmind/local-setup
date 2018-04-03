@@ -1,0 +1,4 @@
+---
+
+- name: Install VLC for watching videos
+  dnf: name=vlc state=present

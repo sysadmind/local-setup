@@ -1,0 +1,40 @@
+---
+
+- name: Install KeePass for password storage
+  dnf: name=keepass state=present
+
+- name: Download KeeWeb
+  get_url: url=https://github.com/keeweb/keeweb/releases/download/v{{ keeweb_version }}/KeeWeb-{{ keeweb_version }}.linux.x64.zip dest=/tmp/keeweb.linux.x64.zip
+
+- name: Create KeeWeb directory
+  file: path=/opt/keeweb state=directory owner=root group=root mode=0755
+
+- name: Unzip KeeWeb
+  unarchive: src=/tmp/keeweb.linux.x64.zip dest=/opt/keeweb copy=no
+
+- name: Link keeweb executable
+  file: src=/opt/keeweb/KeeWeb dest=/usr/local/bin/keeweb state=link
+
+- name: Install vim for text editing on the command line
+  dnf: name=vim state=present
+
+- name: Install ddrescue for installing images to disks
+  dnf: name=ddrescue state=present
+
+- name: Install powerline and plugins
+  dnf: name={{ item }} state=present
+  with_items:
+    - powerline
+    - vim-powerline
+    - tmux-powerline
+
+- name: Install Logitech unifying receiver software
+  dnf: name=solaar state=present
+
+- name: Install tilda drop down terminal
+  dnf: name=tilda state=present
+
+- name: Fix all my fuckups
+  pip: name=thefuck state=present
+
+...

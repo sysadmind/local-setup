@@ -1,0 +1,26 @@
+---
+
+- name: Install MySQL Workbench
+  dnf: name=http://cdn.mysql.com//Downloads/MySQLGUITools/mysql-workbench-community-6.3.7-2.fc24.x86_64.rpm state=present
+
+- name: Install Mariadb common utilities
+  dnf:
+    name: mariadb-common
+    state: present
+
+- name: Set up the local mysql directory
+  file:
+    path: /usr/local/mysql/lib/plugin
+    state: directory
+    owner: root
+    group: root
+    mode: '0755'
+
+- name: Link the dialog.so library for mariadb pam logins
+  file:
+    path: /usr/local/mysql/lib/plugin/dialog.so
+    src: /usr/lib64/mysql/plugin/dialog.so
+    state: link
+    owner: root
+    group: root
+...

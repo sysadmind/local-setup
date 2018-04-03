@@ -1,0 +1,11 @@
+---
+
+- name: Copy cacertificate PEM file
+  copy: src=local_cacert.pem dest=/etc/pki/tls/certs/local_cacert.pem
+  tags: cacerts
+
+- name: Copy CA certs to trusted CA directory
+  copy: src=all-ca.pem dest=/etc/pki/ca-trust/source/anchors/all.pem owner=root group=root mode=0644
+  notify: update ca trust
+
+...

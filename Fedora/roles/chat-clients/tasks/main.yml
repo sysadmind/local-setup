@@ -1,0 +1,15 @@
+---
+
+- name: Install pidgin
+  dnf: name=pidgin state=present
+
+- name: Install extre pidgin addons
+  dnf: name={{ item }} state=present
+  with_items:
+    - libpurple
+    - purple-telegram
+
+- name: Install Slack
+  dnf: name=https://downloads.slack-edge.com/linux_releases/slack-2.1.0-0.1.fc21.x86_64.rpm state=present
+
+...

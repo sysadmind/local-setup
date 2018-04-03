@@ -1,0 +1,8 @@
+---
+
+- hosts: local-workstation
+  connection: local
+  become: yes
+  tasks:
+    - name: Update all system packages
+      dnf: name=* state=latest

@@ -1,0 +1,26 @@
+---
+
+- name: Create a docker group
+  group: name=docker state=present
+
+- name: Add user to docker group
+  user: name={{ personal_user }} groups=docker append=yes
+
+- name: Add docker upstream repo
+  yum_repository:
+    name: "{{ item.name }}"
+    description: "{{ item.description }}"
+    baseurl: "{{ item.baseurl }}"
+    enabled: "{{ item.enabled }}"
+    gpgcheck: "{{ item.gpgcheck }}"
+    gpgkey: "{{ item.gpgkey }}"
+    file: 'docker-ce'
+  with_items: "{{ docker_repos }}"
+
+- name: Install docker
+  dnf: name=docker-ce state=present
+
+- name: Start and enable docker
+  service: name=docker state=started enabled=yes
+
+...

@@ -1,0 +1,13 @@
+---
+
+- name: Install required software for dnf for ansible
+  command: dnf install -y python-dnf
+
+- name: Install selinux requirements
+  dnf: name={{ item }} state=present
+  with_items:
+    - libselinux-python
+    - libsemanage-python
+
+- name: Install ssh password auth requirements
+  dnf: name=sshpass state=present

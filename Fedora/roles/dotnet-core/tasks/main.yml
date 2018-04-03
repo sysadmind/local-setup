@@ -1,0 +1,9 @@
+---
+
+- name: Enable the copr repo for dotnet core
+  shell: sudo dnf copr enable nmilosev/dotnet-sig -y
+
+- name: Install dotnet core
+  dnf: name=dotnetcore state=present
+
+...

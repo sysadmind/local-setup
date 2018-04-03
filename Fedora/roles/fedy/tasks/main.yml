@@ -1,0 +1,7 @@
+---
+
+- name: Install Fedy repo
+  command: sh -c 'rpm --quiet --query folkswithhats-release || dnf -y --nogpgcheck install http://folkswithhats.org/repo/$(rpm -E %fedora)/RPMS/noarch/folkswithhats-release-1.0.1-1.fc$(rpm -E %fedora).noarch.rpm'
+
+- name: Install Fedy
+  dnf: name=fedy state=present

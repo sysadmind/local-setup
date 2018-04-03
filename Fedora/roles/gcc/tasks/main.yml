@@ -1,0 +1,9 @@
+---
+
+- name: Install GCC and G++
+  dnf: name={{ item }} state=present
+  with_items:
+    - gcc
+    - gcc-c++
+
+...

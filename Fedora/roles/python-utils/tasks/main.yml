@@ -1,0 +1,17 @@
+---
+
+- name: Install flake8 for linting code
+  pip: name=flake8 state=present
+
+- name: Install dependencies for helpers
+  dnf: name={{ item }} state=present
+  with_items:
+    - graphviz
+
+- name: Install helpful utils
+  pip: name={{ item }} state=present
+  with_items:
+    - xdot    # Python dependency grapher
+    - yamllint # Linter for yaml config files.
+
+...

@@ -1,0 +1,9 @@
+---
+
+- name: Install vagrant
+  dnf: name=vagrant state=present
+
+- name: Install ruby headers for vagrant plugins
+  dnf: name=ruby-devel state=present
+
+...

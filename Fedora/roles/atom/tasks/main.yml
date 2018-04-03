@@ -1,0 +1,12 @@
+---
+
+- name: Install Atom editor
+  dnf: name=https://github.com/atom/atom/releases/download/v{{ atom_version }}/atom.x86_64.rpm state=present
+
+- name: Install python extras for atom plugins
+  pip: name=sqlparse state=present
+
+- name: Install uncrustify for formatting code (atom beautify)
+  dnf: name=uncrustify state=present
+
+...

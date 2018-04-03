@@ -1,0 +1,57 @@
+---
+
+- hosts: work-laptop
+  connection: local
+  become: yes
+  become_method: sudo
+
+  vars_prompt:
+    - name: personal_user
+      prompt: "What is your username on this system?"
+      private: no
+
+  roles:
+    # - ansible-requirements
+    # - extra-repos
+    # - development-utils
+    # - multimedia
+    # - remote-connectivity
+    # - troubleshooting
+    # - version-control
+    # - utilities
+    # - chat-clients
+    # - zsh
+    # - fedy
+    # - vagrant
+    # - ebooks
+    # - atom
+    # - vscode
+    # - email
+    # - internet-browsers
+    # - mysql-tools
+    # - sudo
+    # - zeal
+    # - php
+    # - php-utils
+    # - f5
+    # - authentication
+    # - kaspersky
+    # - python-utils
+    # - skype
+    # - redis-tools
+    # - gr8-certs
+    # - dns-api
+    # - java-tools
+    # - netextender-pre
+    # - yubikey
+    # - docker
+    # - golang
+
+    # More niche roles
+    # - mate-tweaks
+    # - scap
+    # - dotnet-core
+    # - spotify
+    # - nextcloud
+    # - mackup
+    # - desktop-environment

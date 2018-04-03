@@ -1,0 +1,14 @@
+---
+
+- name: Composer global require packages
+  become: no
+  shell: composer global require {{ item }}
+  with_items:
+    - squizlabs/php_codesniffer
+    - laravel/installer
+
+- name: Install composer global packages
+  become: no
+  shell: composer global install
+
+...

@@ -1,0 +1,42 @@
+---
+
+- name: Install gnome tweak tools
+  dnf: name={{ item }} state=present
+  with_items:
+    - gnome-tweak-tool
+    - dconf-editor
+    - gconf-editor
+
+- name: Test switch workspaces keybindings
+  command: gsettings get {{ item.namespace }} {{ item.name }}
+  with_items:
+    - name: maximize
+      namespace: org.mate.Marco.window-keybindings
+      value: '<Mod4>Up'
+    - name: switch-to-workspace-1
+      namespace: org.mate.Marco.global-keybindings
+      value: '<Alt>1'
+    - name: switch-to-workspace-2
+      namespace: org.mate.Marco.global-keybindings
+      value: '<Alt>2'
+    - name: switch-to-workspace-3
+      namespace: org.mate.Marco.global-keybindings
+      value: '<Alt>3'
+    - name: switch-to-workspace-4
+      namespace: org.mate.Marco.global-keybindings
+      value: '<Alt>4'
+    - name: side-by-side-tiling
+      namespace: org.mate.Marco.general
+      value: 'true'
+    - name: screensaver
+      namespace: org.mate.SettingsDaemon.plugins.media-keys
+      value: '<Mod4>l'
+  register: gnome_change_workspace_key_bindings
+  become: no
+  changed_when: false
+
+- name: Debug var
+  command: gsettings set {{ item.item.namespace }} {{ item.item.name }} "{{ item.item.value }}"
+  become: no
+  with_items: "{{ gnome_change_workspace_key_bindings.results }}"
+  when: item.stdout != item.item.value

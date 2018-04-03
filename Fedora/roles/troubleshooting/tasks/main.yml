@@ -1,0 +1,24 @@
+---
+
+- name: Install local performance tools
+  dnf: name={{ item }} state=present
+  with_items:
+    - htop
+    - iotop
+    - mtr
+
+- name: Install network troubleshooting tools
+  dnf: name={{ item }} state=present
+  with_items:
+    - wireshark
+    - wireshark-gnome
+
+- name: Setup wireshark users for gnome usage
+  user: name={{ item }} groups=wireshark append=yes
+  with_items: "{{ wireshark_users }}"
+
+- name: Install nmap for host / port scanning and ssl troubleshooting
+  dnf: name={{ item }} state=present
+  with_items:
+    - nmap
+    - nmap-frontend

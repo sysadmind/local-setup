@@ -1,0 +1,6 @@
+---
+
+- name: Install IPA Admin tools
+  dnf: name=freeipa-admintools state=present
+
+...

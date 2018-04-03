@@ -1,0 +1,4 @@
+---
+
+- name: Install the nextcloud client
+  dnf: name=nextcloud-client state=present
